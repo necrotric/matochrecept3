@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <main class="addRecipe">
+      <form>
+          <label for="recipeName">Recipe name:</label>
+          <input v-model="recipeName" id="recipeName" type="text" placeholder="Recipe name">
+          <label for="description">Description:</label>
+          <textarea v-model ="description" id="description" cols="35" wrap="soft"></textarea>
+          <label for="image">Image:</label>
+          <input v-model="image" id="image" type="text" placeholder="Url to image">
+          <label for="numberOfPerson">Number of servings:</label>
+          <input v-model="numberOfPerson" id="numberOfPerson" type="text" placeholder="Number of servings">
+          <label for="category">category:</label>
+          <input v-model="category" id="category" type="text" placeholder="Category">
+         
+            <br><label for="ingredientname">Ingredients:</label>
+            <input v-on:keyup="autocomplete" v-model="ingredientname" id="ingredientname" type="text" placeholder="ingredients">
+            <ul>
+                <li v-for="get in sameName" v-on:click="option">
+                    {{get}}
+                </li>
+            </ul>
+            <input v-model="amount" id="amount" type="text" placeholder="Amount">
+            <input v-model="unit" id="unit" type="text" placeholder="Unit">
+            <input v-on:click="addToArray" type="submit" value="Add ingredient">
+            <input v-on:click="saveRecipe" type="submit" value="Save recipe">
+      </form>
+    </main>
+         
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
