@@ -1,8 +1,10 @@
 const mongoDB = 'mongodb://localhost:27017/food';
 const bodyParser= require('body-parser');
 let Makerecipe = require('./makerecipe.class');
+let Recipes = require('./Recipes.class');
 //let createRecipe= require('../../models/getjson');
 let createRecipe= require('../../models/createRecipe');
+let receptjson= require('../../json/recept');
 module.exports= class Routes{
     constructor(app, ingredients) {
         this.app = app;
@@ -28,12 +30,17 @@ module.exports= class Routes{
           this.app.post('/recipe.html', parser, async(req,res)=>{
             //console.log(req.body);
             //console.log(req.body.recipeName)
-           let cl = new Makerecipe(req.body.recipeName,req.body.description,req.body.image, req.body.category, req.body.numberOfPerson, req.body.ingredients)
-           let answer= await cl.calceverying();
-           let newRecipe = new createRecipe(cl);
-           newRecipe.save;
-           console.log(req.body);
-           newRecipe.save();
+           let cl = new Makerecipe(req.body.ingredients, req.body.numberOfPerson)
+           let answer= await cl.calcTotalNutrition();
+           //console.log(cl.kcal+'im here');
+           receptjson = createRecipe();
+           //receptjson.save(req.body);
+           let klass = new Recipes(req.body,cl.kcal,cl.kolhydrat,cl.protein);
+           receptjson.save(req.body.recipeName);
+          let ijsonformat= JSON.parse(req.body,cl.kcal,cl.kolhydrat,cl.protein);
+           //receptjson.save(ijsonformat);
+           //console.log(req.body);
+           res.json('sparat');
 
 
           });

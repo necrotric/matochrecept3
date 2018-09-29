@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 var writeJson = require('write-json'); 
+app.use(express.json({extended: false}));
 // Require the built in file system module
 const fs = require('fs');
 // Tell the web server to serve files

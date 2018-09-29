@@ -1,22 +1,27 @@
+const pm = require("promisemaker");
+const fs = pm(
+    require('fs'), 
+    { rejectOnErrors: false }
+);
+const path = require('path');
+
+
 livs = require('../../json/livsmedelsdata.json')
 module.exports=class Makerecipe{
     //todo take in parameters for all values -
     // then combine with ingredients to create a complete recipe after values are calculated
-    constructor(recipeName,description,image,category,numberOfPerson,ingredients){
+    constructor(ingredients,numberOfPerson){
         
-        this.recipeName=recipeName;
-        this.description=description;
-        this.image=image;
-        this.category=category;
         this.numberOfPerson=numberOfPerson;
         this.ingredients=ingredients;
         this.kcal=0;
         this.protein=0;
         this.kolhydrat=0;
-        this.secondlist=[];
+        //this.secondlist=[];
         this.test = this.calceverying(ingredients,livs);
-        console.log('Nothing here'+this.secondlist[0][0]);
-        console.log('Secondlist' + this.secondlist+'Recept namn: '+this.recipeName+' Beskrivning: '+this.description+' Bild länk: '+this.image+' Kategori: '+this.category+' Antal personer: '+this.numberOfPerson+' Ingredienser: '+this.ingredients);
+        this.totalValue= this.calcTotalNutrition(this.secondlist,this.numberOfPerson);
+        //console.log('Nothing here'+this.secondlist[0][0]);
+        console.log('Näringsvärden: kcal:' + this.kcal+', Protein:'+ this.protein+', Kolhydrat: '+ this.kolhydrat+'  Antal personer: '+this.numberOfPerson+' Ingredienser: '+this.ingredients);
     }
     async calceverying(ingredients,livs){
         function convertNumber(str){
@@ -26,9 +31,9 @@ module.exports=class Makerecipe{
         }
         //let secondlist=[];
         let list=[];
-        for(let i=0; i<=ingredients.length;i++){
+        for(let i=0; i<ingredients.length;i++){
            // console.log(ingredients.length);
-            let name;
+            let name='';
             
             let unit;
             let amount;
@@ -72,17 +77,17 @@ module.exports=class Makerecipe{
                            for(let energyname of i.Naringsvarden.Naringsvarde){
                                 if(energyname.Namn=='Energi (kcal)'){
                                     
-                                    this.kcal=convertNumber(energyname.Varde)*antalgram;
+                                    this.kcal+=convertNumber(energyname.Varde)*antalgram;
                                    //console.log(this.kcal)
                                     //list.push(this.kcal);
                                 }
                                 if(energyname.Namn=='Protein'){
-                                    this.protein=convertNumber(energyname.Varde)*antalgram;
+                                    this.protein+=convertNumber(energyname.Varde)*antalgram;
                                    // console.log(this.protein)
                                    // list.push(this.protein);
                                 }
                                 if(energyname.Namn=='Kolhydrater'){
-                                    this.kolhydrat=convertNumber(energyname.Varde)*antalgram;
+                                    this.kolhydrat+=convertNumber(energyname.Varde)*antalgram;
                                     //console.log(this.kolhydrat)
                                     //list.push(this.kolhydrat);
                                 }
@@ -90,31 +95,20 @@ module.exports=class Makerecipe{
                            }
                        }
                    }
-                   list.push(this.kcal);
-                   list.push(this.protein);
-                   list.push(this.kolhydrat);
-                   this.secondlist.push(list);
-                   console.log(this.secondlist);
-                   list=[];
-                   this.kcal=0;
-                   this.protein=0;
-                   this.kolhydrat=0;
-                   console.log(this.kolhydrat);
+                //    list.push(this.kcal);
+                //    list.push(this.protein);
+                //    list.push(this.kolhydrat);
+                //    this.secondlist.push(list);
+                //    console.log(this.secondlist);
+                //    list=[];
+                //    this.kcal=;
+                //    this.protein=0;
+                //    this.kolhydrat=0;
+                   //console.log(this.kolhydrat);
                   
 
             }
-                     console.log(this.secondlist+'do i have access?');
-            // console.log(secondlist);
-            // console.log('do i get here=?');
-            // for(let i=0; i<=secondlist.length;i++){
-            //     this.kcal+=convertNumber(secondlist[i][0]);
-            //     this.protein+=convertNumber(secondlist[i][1])
-            //     this.kolhydrat+=convertNumber(secondlist[i][2])
-            //    }
-            //    console.log(this.kcal);
-            //    console.log(this.protein);
-            //    console.log(this.kolhydrat);
-            let result = await promise
+            //let result = await promise
 
             //console.log(secondlist+'do i have access?');
             // console.log(secondlist);
@@ -135,6 +129,30 @@ module.exports=class Makerecipe{
             
 
 
-        }      
+        }
+        async calcTotalNutrition(){
+            function convertNumber(str){
+
+                let nr=str.replace(",",".");
+                return parseFloat(nr);
+            }
+               
+               console.log(this.kcal+' hello?');
+               console.log(this.protein);
+               console.log(this.kolhydrat);
+               console.log(this.numberOfPerson)
+               this.kcal=this.kcal/convertNumber(this.numberOfPerson);
+               this.protein=this.protein/convertNumber(this.numberOfPerson);
+               this.kolhydrat=this.kolhydrat/convertNumber(this.numberOfPerson);
+               console.log(this.kcal+'Dividing by people');
+               console.log(this.protein+'Dividing by people');
+               console.log(this.kolhydrat+'Dividing by people');
+               
+              //let result= await calc();
+            //    this.kcal=this.kcal/convertNumber(numberOfPerson);
+            //    console.log(this.kcal+'Dividing by people');
+        }        
     
-}
+        
+    } 
+    
