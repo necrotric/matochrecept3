@@ -19,16 +19,28 @@
           <input v-model="category" id="category" type="text" placeholder="Category">
          
             <br><label for="ingredientname">Ingredients:</label>
-            <input v-on:keyup="autocomplete" v-model="ingredientname" id="ingredientname" type="text" placeholder="ingredients">
+            <input v-on:keyup="autocomplete" v-model="ingredientname" id="text" type="application/json" placeholder="ingredients">
             <ul>
                 <li v-for="get in sameName" v-on:click="option">
                     {{get}}
                 </li>
             </ul>
+            <label for="amount">Amount:</label>
             <input v-model="amount" id="amount" type="text" placeholder="Amount">
-            <input v-model="unit" id="unit" type="text" placeholder="Unit">
+            <label for="unit">kg:</label>
+            <input v-model="unit" id="unit" type="radio" value="kg" placeholder="Unit">
+            <label for="unit">hg:</label>
+            <input v-model="unit" id="unit" type="radio" value="hg" placeholder="Unit">
+            <label for="unit">dl:</label>
+            <input v-model="unit" id="unit" type="radio" value="dl" placeholder="Unit">
+            <label for="unit">msk:</label>
+            <input v-model="unit" id="unit" type="radio" value="msk" placeholder="Unit">
+            <label for="unit">gram:</label>
+            <input v-model="unit" id="unit" type="radio" value="gram" placeholder="Unit">
+            <label for="unit">gram:</label>
+            <input v-model="gram" id="gram" type="text" value="gram" placeholder="gram">
             <input v-on:click="addToArray" type="submit" value="Add ingredient">
-            <input v-on:click="saveRecipe" type="submit" value="Save recipe">
+            <input v-on:click="saveRecipe" type="submit" method="POST" value="Save recipe">
       </form>
     </main>
          

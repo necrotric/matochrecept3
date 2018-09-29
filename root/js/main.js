@@ -1,4 +1,3 @@
-
 const router = new VueRouter();
 let counter =0;
 let newRecipe= new Vue({
@@ -13,6 +12,7 @@ let newRecipe= new Vue({
         ingredientname: '',
         amount:'',
         unit:'',
+        gram:'',
         sameName: [],
         ingredients:[],    
             ingnamn:[]
@@ -36,6 +36,7 @@ let newRecipe= new Vue({
             this.ingnamn.push(this.ingredientname);
             this.ingnamn.push(this.amount);
             this.ingnamn.push(this.unit);
+            this.ingnamn.push(this.gram);
             this.ingredients.push(this.ingnamn);
             this.ingnamn=[];
             this.ingredientname='';
@@ -65,8 +66,3 @@ let newRecipe= new Vue({
     }
 
 });
-
-
-
-
-
