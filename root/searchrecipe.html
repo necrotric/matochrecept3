@@ -28,7 +28,8 @@
         <input v-on:keyup="recalc" v-model="portions" type="text" id="portions" placeholder="Number of portions">
         <p name="recept"><b>Recipe name:</b>{{recept}}</p>
         <p name="desc"><b>Description:</b>{{desc}}</p>
-        <p name="image"><b>Image:</b>{{image}}</p>
+        <img v-bind:src="image" />
+        <!-- <img name="image"><b>Image:</b>{{image}}</img> -->
         <p name="category"><b>Category</b>{{category}}</p>
         <p name="person"><b>Number of Persons:</b>{{person}}</p>
         <p name="ingredients"><b>Ingredients:</b>{{ingredients}}</p>

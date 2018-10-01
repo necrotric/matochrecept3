@@ -43,10 +43,7 @@ module.exports= class Routes{
 
 
           this.app.post('/recipe.html',(req,res)=>{
-  
-           let cl = new Makerecipe(req.body.ingredients, req.body.numberOfPerson);
-  
-           //let object = new Recipes(req.body,cl.kcal,cl.protein, cl.kolhydrat);          
+           let cl = new Makerecipe(req.body.ingredients, req.body.numberOfPerson); 
            let klass = new NewRecipe(req.body,(req.body.protein=cl.protein ,req.body.kcal=cl.kcal , req.body.kolhydrat=cl.kolhydrat));
            console.log(klass);
            klass.save().then(data=>{res.send(JSON.stringify(klass))}).catch(data=>{res.send('err')})
