@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Titel</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="main.js"></script>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Food that stings</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipe.html">Add recipes</a></li>
+      </ul>
+      
+    </nav>
+    <main class="searchonrecipe">
+      <div>
+        <input v-on:keyup="searchfunction" v-model="search" placeholder="search" type="text">
+        <input v-on:keyup="categorysearch" v-model="csearch" placeholder="Filter after category" type="text">
+        <ul>
+        <li v-if="nameBoolean===true" v-for="get in receptlist" v-on:click="redirect(get)">
+            {{get.recipeName}}
+        </li>
+        </ul>
+        <div v-if="boolean===true">
+        <input v-on:keyup="recalc" v-model="portions" type="text" id="portions" placeholder="Number of portions">
+        <p name="recept"><b>Recipe name:</b>{{recept}}</p>
+        <p name="desc"><b>Description:</b>{{desc}}</p>
+        <p name="image"><b>Image:</b>{{image}}</p>
+        <p name="category"><b>Category</b>{{category}}</p>
+        <p name="person"><b>Number of Persons:</b>{{person}}</p>
+        <p name="ingredients"><b>Ingredients:</b>{{ingredients}}</p>
+        <p name="kcal"><b>kcal per person:</b>{{kcal}}</p>
+        <p name="protein"><b>Protein per person:</b>{{protein}}</p>
+        <p name="kolhydrat"><b>kolhydrat per person:</b>{{kolhydrat}}</p>
+
+      </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/classes/ingredientBr.class.js"></script>
+    <script src="/js/searchrecipe.js"></script>
+  </body>
+</html>

@@ -23,7 +23,7 @@ module.exports=class Makerecipe{
         //console.log('Nothing here'+this.secondlist[0][0]);
         console.log('Näringsvärden: kcal:' + this.kcal+', Protein:'+ this.protein+', Kolhydrat: '+ this.kolhydrat+'  Antal personer: '+this.numberOfPerson+' Ingredienser: '+this.ingredients);
     }
-    async calceverying(ingredients,livs){
+     calceverying(ingredients,livs){
         function convertNumber(str){
 
             let nr=str.replace(",",".");
@@ -130,23 +130,23 @@ module.exports=class Makerecipe{
 
 
         }
-        async calcTotalNutrition(){
+        calcTotalNutrition(){
             function convertNumber(str){
 
                 let nr=str.replace(",",".");
                 return parseFloat(nr);
             }
                
-               console.log(this.kcal+' hello?');
-               console.log(this.protein);
-               console.log(this.kolhydrat);
-               console.log(this.numberOfPerson)
+            //    console.log(this.kcal+' hello?');
+            //    console.log(this.protein);
+            //    console.log(this.kolhydrat);
+            //    console.log(this.numberOfPerson)
                this.kcal=this.kcal/convertNumber(this.numberOfPerson);
                this.protein=this.protein/convertNumber(this.numberOfPerson);
                this.kolhydrat=this.kolhydrat/convertNumber(this.numberOfPerson);
-               console.log(this.kcal+'Dividing by people');
-               console.log(this.protein+'Dividing by people');
-               console.log(this.kolhydrat+'Dividing by people');
+            //    console.log(this.kcal+'Dividing by people');
+            //    console.log(this.protein+'Dividing by people');
+            //    console.log(this.kolhydrat+'Dividing by people');
                
               //let result= await calc();
             //    this.kcal=this.kcal/convertNumber(numberOfPerson);

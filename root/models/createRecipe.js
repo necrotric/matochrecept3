@@ -7,12 +7,14 @@ const mongoose = require('mongoose');
   })
   mongoose.connect(mongoDB, { useNewUrlParser: true });
   const recipeSchema = new mongoose.Schema({
-    recipeName:{},
-    description:{},
-    image:{},
-    category:{},
-      numberOfPerson:Number,
-      ingnamn:{}
-
+   recipeName:{},
+   description :{},
+   image :{},
+   category:{},
+   numberOfPerson:{},
+   ingredients:{},
+   kcal:{},
+   protein:{},
+   kolhydrat:{}
   });
 let NewRecipe = module.exports= mongoose.model('NewIngredient', recipeSchema);

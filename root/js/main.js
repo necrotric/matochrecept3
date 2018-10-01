@@ -1,5 +1,4 @@
 const router = new VueRouter();
-let counter =0;
 let newRecipe= new Vue({
     router,
     el: '.addRecipe',
@@ -13,9 +12,13 @@ let newRecipe= new Vue({
         amount:'',
         unit:'',
         gram:'',
+        kcal:'',
+        protein:'',
+        kolhydrat:'',
         sameName: [],
         ingredients:[],    
-            ingnamn:[]
+            ingnamn:[],
+           // nytt:[]
     },
     methods: {
         autocomplete: function(){
@@ -38,11 +41,11 @@ let newRecipe= new Vue({
             this.ingnamn.push(this.unit);
             this.ingnamn.push(this.gram);
             this.ingredients.push(this.ingnamn);
+            //let ingredient=new IngredientBr(this.name, this.quantity, this.unit);
             this.ingnamn=[];
             this.ingredientname='';
             this.amount='';
             this.unit='';
-
             //counter++;
             //console.log(this.ingredients[0][2]);
            // console.log(this.ingredients.ingnamn[1]);
@@ -52,7 +55,7 @@ let newRecipe= new Vue({
         },
         saveRecipe: function(){
             let recipes=JSON.stringify({recipeName: this.recipeName, description: this.description, image:
-                 this.image, category:this.category, numberOfPerson: this.numberOfPerson, ingredients: this.ingredients});
+                 this.image, category:this.category, numberOfPerson: this.numberOfPerson, ingredients: this.ingredients, kcal:this.kcal, protein:this.protein, kolhydrat:this.kolhydrat});
             console.log(recipes);
            let parsedrecipe= JSON.parse(recipes)
             axios.post('/recipe.html', recipes, { headers: {
