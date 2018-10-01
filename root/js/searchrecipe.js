@@ -26,6 +26,7 @@ let searchbar= new Vue({
     methods:{
         searchfunction: function(){
             this.boolean=false;
+            this.nameBoolean=true;
             this.receptlist=[];
             router.push({path: '/search/'+this.search});
             axios.get('http://localhost:3000/searchrecipe.html/search/'+this.search)               
@@ -42,6 +43,7 @@ let searchbar= new Vue({
     },
 
     categorysearch: function(){
+        this.nameBoolean=true;
         this.boolean=false;
         this.receptlist=[];
         router.push({path: '/csearch/'+this.csearch});
@@ -89,15 +91,20 @@ let searchbar= new Vue({
             //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*1000;
             //   }
               //console.log(this.ingredients[i][1]);
+              //if(this.ingredients[i][2]=='kg'||this.ingredients[i][2]=='hg'||this.ingredients[i][2]=='gram'){
               this.ingredients[i][3]=parseFloat(this.ingredients[i][3])/parseFloat(this.person);
               this.ingredients[i][3]=parseFloat(this.ingredients[i][3])*parseFloat(this.portions);
                 this.ingredients[i][1]=parseFloat(this.ingredients[i][1])/parseFloat(this.person);
              this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*parseFloat(this.portions);
+            //   } else{
+            //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])/parseFloat(this.person);
+            //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*parseFloat(this.portions)
+            //   }
               //ingredients[i][3];
           }
-        }
-          this.person=parseFloat(this.portions);
         
+          this.person=parseFloat(this.portions);
+        }
             console.log('im calculating')
         
         console.log(this.portions);
