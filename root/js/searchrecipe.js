@@ -65,6 +65,7 @@ let searchbar= new Vue({
         this.recept=obj.recipeName;
         this.desc=obj.description;
         this.image=obj.image;
+        console.log(this.image);
         this.category=obj.category;
         this.person=obj.numberOfPerson
         this.ingredients=obj.ingredients;
