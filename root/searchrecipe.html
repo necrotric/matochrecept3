@@ -7,11 +7,12 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <h1>Food that stings</h1>
+    <h1>Search</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="recipe.html">Add recipes</a></li>
+        <li><a href="searchrecipe.html">Search for recipes</a></li>
       </ul>
       
     </nav>
@@ -29,7 +30,7 @@
         <p name="recept"><b>Recipe name:</b>{{recept}}</p>
         <p name="desc"><b>Description:</b>{{desc}}</p>
         <img v-bind:src="image" />
-        <!-- <img name="image"><b>Image:</b>{{image}}</img> -->
+       
         <p name="category"><b>Category</b>{{category}}</p>
         <p name="person"><b>Number of Persons:</b>{{person}}</p>
         <p name="ingredients"><b>Ingredients:</b>{{ingredients}}</p>
@@ -43,7 +44,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/classes/ingredientBr.class.js"></script>
     <script src="/js/searchrecipe.js"></script>
   </body>
 </html>

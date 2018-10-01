@@ -20,7 +20,7 @@ db.on('error', function(err){
 const mongoDB = 'mongodb://localhost:27017/food';
 const bodyParser= require('body-parser');
 let Makerecipe = require('./makerecipe.class');
-let Recipes = require('./Recipes.class');
+
 //let createRecipe= require('../../models/getjson');
 let NewRecipe= require('../../models/createRecipe');
 //let receptjson= require('../../json/recept');
