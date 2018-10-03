@@ -78,4 +78,3 @@ module.exports= class Routes{
           })
 }
 }
-//{description:0,image:0,category:0,numberOfPerson:0,ingredients:0,kcal:0,protein:0,kolhydrat:0}
