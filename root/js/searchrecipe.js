@@ -49,13 +49,8 @@ let searchbar= new Vue({
         router.push({path: '/csearch/'+this.csearch});
         axios.get('http://localhost:3000/searchrecipe.html/csearch/'+this.csearch)               
         .then( response => {
-            if(this.csearch.length>1){
                 this.receptlist=response.data;
                 console.log(receptlist,' Receptlista!');
-            }else{
-               console.log(error)
-            }
-                  
     })
     .catch( error=> console.log(error));
     },
@@ -89,11 +84,16 @@ let searchbar= new Vue({
             //       console.log('do i get in here? kg to gram')
             //     this.ingredients[i][2]='gram';
             //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*1000;
+            // if(this.ingredients[i][3]!=null){
+            //     this.ingredients[i][3].pop();
+            // }
             //   }
               //console.log(this.ingredients[i][1]);
               if(this.ingredients[i][2]=='kg'||this.ingredients[i][2]=='hg'||this.ingredients[i][2]=='gram'){
+                if(this.ingredients[i][3]!=''){
               this.ingredients[i][3]=parseFloat(this.ingredients[i][3])/parseFloat(this.person);
               this.ingredients[i][3]=parseFloat(this.ingredients[i][3])*parseFloat(this.portions);
+                }
                 this.ingredients[i][1]=parseFloat(this.ingredients[i][1])/parseFloat(this.person);
              this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*parseFloat(this.portions);
                } else{
@@ -102,8 +102,9 @@ let searchbar= new Vue({
               }
               //ingredients[i][3];
           }
-        
+          if(this.portions!=''){
           this.person=parseFloat(this.portions);
+        }
         }
             console.log('im calculating')
         

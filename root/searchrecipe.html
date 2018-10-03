@@ -19,7 +19,19 @@
     <main class="searchonrecipe">
       <div>
         <input v-on:keyup="searchfunction" v-model="search" placeholder="search" type="text">
-        <input v-on:keyup="categorysearch" v-model="csearch" placeholder="Filter after category" type="text">
+        <select v-model="csearch" v-on:click="categorysearch">
+            <option disabled value="">Please select one</option>
+            <option>Meat</option>
+            <option>Desert</option>
+            <option>Fruit</option>
+            <option>Vegetarian</option>
+            <option>Pizza</option>
+          </select>
+          <span>Selected: {{ category }}</span>
+        
+
+
+
         <ul>
         <li v-if="nameBoolean===true" v-for="get in receptlist" v-on:click="redirect(get)">
             {{get.recipeName}}
@@ -33,7 +45,16 @@
        
         <p name="category"><b>Category</b>{{category}}</p>
         <p name="person"><b>Number of Persons:</b>{{person}}</p>
-        <p name="ingredients"><b>Ingredients:</b>{{ingredients}}</p>
+        <p name="ingredients"><b>Ingredients</b></p>
+        <ul>
+          <p v-for='get in ingredients'>
+            <br>
+           <template v-for='(element,index) in get' v-if=" index < 3">
+             {{index === 1 && !(element.trim()) ? get[3] : element}}
+          </template>
+          </p>
+         </ul>
+        <!-- <p v-for="get in ingredients" name="ingredients"><b>Ingredients:</b>{{get || !null || !undefined}}</p> -->
         <p name="kcal"><b>kcal per person:</b>{{kcal}}</p>
         <p name="protein"><b>Protein per person:</b>{{protein}}</p>
         <p name="kolhydrat"><b>kolhydrat per person:</b>{{kolhydrat}}</p>
