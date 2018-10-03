@@ -91,15 +91,15 @@ let searchbar= new Vue({
             //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*1000;
             //   }
               //console.log(this.ingredients[i][1]);
-              //if(this.ingredients[i][2]=='kg'||this.ingredients[i][2]=='hg'||this.ingredients[i][2]=='gram'){
+              if(this.ingredients[i][2]=='kg'||this.ingredients[i][2]=='hg'||this.ingredients[i][2]=='gram'){
               this.ingredients[i][3]=parseFloat(this.ingredients[i][3])/parseFloat(this.person);
               this.ingredients[i][3]=parseFloat(this.ingredients[i][3])*parseFloat(this.portions);
                 this.ingredients[i][1]=parseFloat(this.ingredients[i][1])/parseFloat(this.person);
              this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*parseFloat(this.portions);
-            //   } else{
-            //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])/parseFloat(this.person);
-            //     this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*parseFloat(this.portions)
-            //   }
+               } else{
+                this.ingredients[i][1]=parseFloat(this.ingredients[i][1])/parseFloat(this.person);
+                this.ingredients[i][1]=parseFloat(this.ingredients[i][1])*parseFloat(this.portions)
+              }
               //ingredients[i][3];
           }
         
