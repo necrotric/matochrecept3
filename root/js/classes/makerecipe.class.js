@@ -21,7 +21,7 @@ module.exports=class Makerecipe{
         this.test = this.calceverying(ingredients,livs);
         this.totalValue= this.calcTotalNutrition(this.secondlist,this.numberOfPerson);
         //console.log('Nothing here'+this.secondlist[0][0]);
-        console.log('Näringsvärden: kcal:' + this.kcal+', Protein:'+ this.protein+', Kolhydrat: '+ this.kolhydrat+'  Antal personer: '+this.numberOfPerson+' Ingredienser: '+this.ingredients);
+        //console.log('Näringsvärden: kcal:' + this.kcal+', Protein:'+ this.protein+', Kolhydrat: '+ this.kolhydrat+'  Antal personer: '+this.numberOfPerson+' Ingredienser: '+this.ingredients);
     }
      calceverying(ingredients,livs){
         function convertNumber(str){
@@ -70,7 +70,7 @@ module.exports=class Makerecipe{
                 }
                // console.log(antalgram+'Got this far');
                 antalgram=antalgram/100;
-                console.log(antalgram+' Beräknat nytt gram');
+                //console.log(antalgram+' Beräknat nytt gram');
     
                 for(let i of livs){
                        if(i.Namn.toLowerCase()==name){

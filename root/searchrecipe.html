@@ -50,14 +50,15 @@
           <p v-for='get in ingredients'>
             <br>
            <template v-for='(element,index) in get' v-if=" index < 3">
-             {{index === 1 && !(element.trim()) ? get[3] : element}}
+             {{index === 1 && !element ? get[3] : element}}
           </template>
           </p>
          </ul>
+         
         <!-- <p v-for="get in ingredients" name="ingredients"><b>Ingredients:</b>{{get || !null || !undefined}}</p> -->
         <p name="kcal"><b>kcal per person:</b>{{kcal}}</p>
         <p name="protein"><b>Protein per person:</b>{{protein}}</p>
-        <p name="kolhydrat"><b>kolhydrat per person:</b>{{kolhydrat}}</p>
+        <p name="kolhydrat"><b>Carbohydrate per person:</b>{{kolhydrat}}</p>
 
       </div>
       </div>

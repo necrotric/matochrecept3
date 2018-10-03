@@ -73,11 +73,12 @@ let searchbar= new Vue({
         console.log(this.kolhydrat);
     },
     recalc: function(){
-        if(this.portions!='' || this.portions!=null|| this.portions!=undefined|| this.portions!=NaN){
-            if(this.person!='' || this.person!=null|| this.person!=undefined|| this.person!=NaN){
+        console.log('im inside recalc');
+        if(this.portions!='' && this.portions!=null&& this.portions!=undefined&& this.portions!=NaN){
+            if(this.person!='' && this.person!=null&& this.person!=undefined&& this.person!=NaN){
             
-        console.log('im in!')
-            console.log(this.person);
+        console.log('im in!');
+            console.log(this.person +' im not anumber?');
             console.log(typeof this.ingredients[0][1]);
           for(let i=0;i<this.ingredients.length;i++){
             //   if(this.ingredients[i][2]=='kg'){
