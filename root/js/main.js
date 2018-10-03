@@ -65,7 +65,14 @@ let newRecipe= new Vue({
                     this.send=parsedrecipe
                 })
                 .catch( error=> console.log(error));
-        }
+                this.recipeName='';
+                this.ingredients=[]; 
+                this.description='';
+                this.image='';
+                this.category='';
+                this.numberOfPerson='';
+        
+            }
     }
 
 });
