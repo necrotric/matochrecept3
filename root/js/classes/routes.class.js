@@ -76,5 +76,20 @@ module.exports= class Routes{
             });
             //res.json(result);
           })
+
+          // this.app.get('/recipe.html/csearch/:input', function(req, res){
+          //   let userinput = req.params.input;
+          //   //let asd = NewRecipe();
+          //   NewRecipe.find({category:{$regex: new RegExp('^'+userinput, 'i')}}, function(err, result){
+          //     if(err){
+          //       console.log(err);
+          //     } else {
+          //       console.log(result);
+          //       res.json(result);
+          //     }
+          //     //res.json(result);
+          //   });
+          //   //res.json(result);
+          // })
 }
 }

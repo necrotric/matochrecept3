@@ -8,6 +8,7 @@ let newRecipe= new Vue({
         image: '',
         numberOfPerson: '',
         category: '',
+        sameCategory:'',
         ingredientname: '',
         amount:'',
         unit:'',
@@ -28,6 +29,23 @@ let newRecipe= new Vue({
                 .then( response => this.sameName=response.data);
             }
         },
+
+        autocompleteCategory: function(){
+            if(this.category.length>=2){
+                router.push({ path: '/csearch/'+this.category});
+                axios.get('http://localhost:3000/recipe.html/csearch/'+this.category)
+                .then( response => this.sameCategory=response.data);
+            }
+        },
+        optionCategory: function(cat) {
+            this.category=cat.srcElement.textContent;
+            this.category=this.category.trim();
+            this.sameCategory=[];
+
+        },
+
+
+
         option: function(get) {
             this.ingredientname=get.srcElement.textContent;
             this.ingredientname=this.ingredientname.trim();
@@ -46,6 +64,7 @@ let newRecipe= new Vue({
             this.ingredientname='';
             this.amount='';
             this.unit='';
+            this.gram='';
             //counter++;
             //console.log(this.ingredients[0][2]);
            // console.log(this.ingredients.ingnamn[1]);

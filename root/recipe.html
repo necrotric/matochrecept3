@@ -24,7 +24,16 @@
           <label for="numberOfPerson">Number of servings:</label>
           <input v-model="numberOfPerson" id="numberOfPerson" type="text" placeholder="Number of servings">
           <label for="category">category:</label>
-          <input v-model="category" id="category" type="text" placeholder="Category">
+          <!-- <input v-model="category" id="category" type="text" placeholder="Category"> -->
+          <select v-model="category">
+              <option disabled value="">Please select one</option>
+              <option>Meat</option>
+              <option>Desert</option>
+              <option>Fruit</option>
+              <option>Vegetarian</option>
+              <option>Pizza</option>
+            </select>
+            <span>Selected: {{ category }}</span>
          
             <br><label for="ingredientname">Ingredients:</label>
             <input v-on:keyup="autocomplete" v-model="ingredientname" id="text" type="application/json" placeholder="ingredients">
@@ -46,12 +55,20 @@
             <label for="unit">msk:</label>
             <input v-model="unit" id="unit" type="radio" value="msk" placeholder="Unit">
             <label for="unit">gram:</label>
-            <input v-model="unit" id="unit" type="radio" value="gram" placeholder="Unit">
+            <input v-model="unit" id="unit" type="radio" value="gram" placeholder="Unit"><br>
             <label for="unit">gram:</label>
             <input v-model="gram" id="gram" type="text" value="gram" placeholder="gram">
             <input v-on:click="addToArray" type="submit" value="Add ingredient">
             <input v-on:click="saveRecipe" type="submit" method="POST" value="Save recipe">
       </form>
+      <div>
+          <p v-for='get in ingredients'>
+              <br>
+             <template v-for='element in get'  v-if="element!=''&& element!=null">
+               {{element}}
+            </template>
+            </p>
+      </div>
     </main>
          
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

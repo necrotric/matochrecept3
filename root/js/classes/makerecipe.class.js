@@ -144,6 +144,12 @@ module.exports=class Makerecipe{
                this.kcal=this.kcal/convertNumber(this.numberOfPerson);
                this.protein=this.protein/convertNumber(this.numberOfPerson);
                this.kolhydrat=this.kolhydrat/convertNumber(this.numberOfPerson);
+               this.kolhydrat=(this.kolhydrat).toFixed(2);
+               this.protein=(this.protein).toFixed(2)
+               this.kcal=(this.kcal).toFixed(2)
+            //    this.kcal=this.kcal.toFixed(2);
+            //    this.protein=this.protein.tofixed(2);
+            //    this.kolhydrat=this.kolhydrat.tofixed(2);
             //    console.log(this.kcal+'Dividing by people');
             //    console.log(this.protein+'Dividing by people');
             //    console.log(this.kolhydrat+'Dividing by people');
