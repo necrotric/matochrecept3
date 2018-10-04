@@ -15,6 +15,11 @@ const mongoose = require('mongoose');
    ingredients:{},
    kcal:{},
    protein:{},
-   kolhydrat:{}
+   kolhydrat:{},
+   saturated_fat:{},
+   monounsaturated_fat:{},
+   polyunsaturated_fat:{},
+   salt:{},
+   dextrose:{}
   });
 let NewRecipe = module.exports= mongoose.model('NewIngredient', recipeSchema);
