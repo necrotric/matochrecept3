@@ -21,7 +21,6 @@ module.exports=class Makerecipe{
         this.monounsaturated_fat=0;
         this.polyunsaturated_fat=0;
         this.salt=0;
-        this.dextrose=0;
         //this.secondlist=[];
         this.test = this.calceverying(ingredients,livs);
         this.totalValue= this.calcTotalNutrition(this.secondlist,this.numberOfPerson);
@@ -102,9 +101,6 @@ module.exports=class Makerecipe{
                                 if(energyname.Namn=='Salt'){
                                     this.salt+=convertNumber(energyname.Varde)*antalgram;
                                 }
-                                if(energyname.Namn=='Druvsocker'){
-                                    this.dextrose+=convertNumber(energyname.Varde)*antalgram;
-                                }
                                 
                                 //console.log(this.kcal,this.protein,this.kolhydrat);
                            }
@@ -136,7 +132,7 @@ module.exports=class Makerecipe{
                this.monounsaturated_fat=this.monounsaturated_fat/convertNumber(this.numberOfPerson);
                this.polyunsaturated_fat=this.polyunsaturated_fat/convertNumber(this.numberOfPerson);
                this.salt=this.salt/convertNumber(this.numberOfPerson);
-               this.dextrose =this.dextrose /convertNumber(this.numberOfPerson);
+               
 
                this.kolhydrat=(this.kolhydrat).toFixed(2);
                this.protein=(this.protein).toFixed(2)
@@ -146,7 +142,6 @@ module.exports=class Makerecipe{
                this.monounsaturated_fat =(this.monounsaturated_fat ).toFixed(2);
                this.polyunsaturated_fat =(this.polyunsaturated_fat ).toFixed(2);
                this.salt=(this.salt).toFixed(2);
-               this.dextrose=(this.dextrose).toFixed(2);
         }        
     
         

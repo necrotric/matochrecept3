@@ -19,7 +19,6 @@ const mongoose = require('mongoose');
    saturated_fat:{},
    monounsaturated_fat:{},
    polyunsaturated_fat:{},
-   salt:{},
-   dextrose:{}
+   salt:{}
   });
 let NewRecipe = module.exports= mongoose.model('NewIngredient', recipeSchema);

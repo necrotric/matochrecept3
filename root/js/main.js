@@ -20,7 +20,6 @@ let newRecipe= new Vue({
         monounsaturated_fat:'',
         polyunsaturated_fat:'',
         salt:'',
-        dextrose:'',
         sameName: [],
         ingredients:[],    
             ingnamn:[],
@@ -81,7 +80,7 @@ let newRecipe= new Vue({
             let recipes=JSON.stringify({recipeName: this.recipeName, description: this.description, image:
                  this.image, category:this.category, numberOfPerson: this.numberOfPerson, ingredients: this.ingredients, kcal:this.kcal, protein:this.protein,
                  kolhydrat:this.kolhydrat, saturated_fat:this.saturated_fat, monounsaturated_fat:this.monounsaturated_fat, 
-                 olyunsaturated_fat:this.olyunsaturated_fat, salt:this.salt, dextrose:this.dextrose});
+                 olyunsaturated_fat:this.olyunsaturated_fat, salt:this.salt});
             console.log(recipes);
            let parsedrecipe= JSON.parse(recipes)
             axios.post('/recipe.html', recipes, { headers: {

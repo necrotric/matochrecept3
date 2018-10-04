@@ -20,7 +20,6 @@ let searchbar= new Vue({
         monounsaturated_fat:'',
         polyunsaturated_fat:'',
         salt:'',
-        dextrose:'',
         portions:'',
         csearch:'',
         boolean: false,
@@ -78,7 +77,6 @@ let searchbar= new Vue({
         this.monounsaturated_fat=obj.monounsaturated_fat;
         this.polyunsaturated_fat=obj.polyunsaturated_fat;
         this.salt=obj.salt;
-        this.dextrose=obj.dextrose;
 
         console.log(this.kolhydrat);
     },
