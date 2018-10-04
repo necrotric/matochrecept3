@@ -17,6 +17,11 @@ module.exports=class Makerecipe{
         this.kcal=0;
         this.protein=0;
         this.kolhydrat=0;
+        this.saturated_fat=0;
+        this.monounsaturated_fat=0;
+        this.polyunsaturated_fat=0;
+        this.salt=0;
+        this.dextrose=0;
         //this.secondlist=[];
         this.test = this.calceverying(ingredients,livs);
         this.totalValue= this.calcTotalNutrition(this.secondlist,this.numberOfPerson);
@@ -40,37 +45,35 @@ module.exports=class Makerecipe{
             let gram;
             let antalgram=0;
                 name=ingredients[i][0];
-                //console.log(name);
+                
                 unit=ingredients[i][2];
-               // console.log(unit);
+               
                 amount=convertNumber(ingredients[i][1]);
-               // console.log(amount);
+               
           
                 gram=convertNumber(ingredients[i][3]);
             
                 if(unit=='kg'){
-                 //   console.log('true in kg');
+                
                     antalgram=1000*amount;
                     console.log(antalgram+ 'KG CALC');
-                    //console.log(antalgram+'HERE KILO TO GRAM CALCULATE');
+                    
                  }
                 else if(unit=='hg'){
                     antalgram=100*amount;
-                    //console.log('im never here')
-                    //console.log(antalgram+'HERE HECTO TO GRAM CALCULATE');
+               
                 }
                 else if(unit=='gram'){
                     antalgram=gram
-                   // console.log(antalgram+'HERE GRAM CALCULATE');
+                 
                 }
                 else {
                     antalgram=gram*amount;
-                   // console.log('im in gram');
-                   // console.log(antalgram+'Here i am');
+                 
                 }
-               // console.log(antalgram+'Got this far');
+               
                 antalgram=antalgram/100;
-                //console.log(antalgram+' Beräknat nytt gram');
+                
     
                 for(let i of livs){
                        if(i.Namn.toLowerCase()==name){
@@ -78,51 +81,40 @@ module.exports=class Makerecipe{
                                 if(energyname.Namn=='Energi (kcal)'){
                                     
                                     this.kcal+=convertNumber(energyname.Varde)*antalgram;
-                                   //console.log(this.kcal)
-                                    //list.push(this.kcal);
                                 }
                                 if(energyname.Namn=='Protein'){
                                     this.protein+=convertNumber(energyname.Varde)*antalgram;
-                                   // console.log(this.protein)
-                                   // list.push(this.protein);
+                                  
                                 }
                                 if(energyname.Namn=='Kolhydrater'){
                                     this.kolhydrat+=convertNumber(energyname.Varde)*antalgram;
-                                    //console.log(this.kolhydrat)
-                                    //list.push(this.kolhydrat);
+                                 
                                 }
+                                if(energyname.Namn=='Summa mättade fettsyror'){
+                                    this.saturated_fat+=convertNumber(energyname.Varde)*antalgram;
+                                }
+                                if(energyname.Namn=='Summa enkelomättade fettsyror'){
+                                    this.monounsaturated_fat+=convertNumber(energyname.Varde)*antalgram;
+                                }
+                                if(energyname.Namn=='Summa fleromättade fettsyror'){
+                                    this.polyunsaturated_fat+=convertNumber(energyname.Varde)*antalgram;
+                                }
+                                if(energyname.Namn=='Salt'){
+                                    this.salt+=convertNumber(energyname.Varde)*antalgram;
+                                }
+                                if(energyname.Namn=='Druvsocker'){
+                                    this.dextrose+=convertNumber(energyname.Varde)*antalgram;
+                                }
+                                
                                 //console.log(this.kcal,this.protein,this.kolhydrat);
                            }
                        }
                    }
-                //    list.push(this.kcal);
-                //    list.push(this.protein);
-                //    list.push(this.kolhydrat);
-                //    this.secondlist.push(list);
-                //    console.log(this.secondlist);
-                //    list=[];
-                //    this.kcal=;
-                //    this.protein=0;
-                //    this.kolhydrat=0;
-                   //console.log(this.kolhydrat);
+
                   
 
             }
-            //let result = await promise
-
-            //console.log(secondlist+'do i have access?');
-            // console.log(secondlist);
-            // console.log('do i get here=?');
-            // for(let i=0; i<=secondlist.length;i++){
-            //     this.kcal+=convertNumber(secondlist[i][0]);
-            //     this.protein+=convertNumber(secondlist[i][1])
-            //     this.kolhydrat+=convertNumber(secondlist[i][2])
-            //    }
-            //    console.log(this.kcal);
-            //    console.log(this.protein);
-            //    console.log(this.kolhydrat);
-
-               // console.log(unit+ ' ' +name);
+ 
 
        
             
@@ -137,26 +129,24 @@ module.exports=class Makerecipe{
                 return parseFloat(nr);
             }
                
-            //    console.log(this.kcal+' hello?');
-            //    console.log(this.protein);
-            //    console.log(this.kolhydrat);
-            //    console.log(this.numberOfPerson)
                this.kcal=this.kcal/convertNumber(this.numberOfPerson);
                this.protein=this.protein/convertNumber(this.numberOfPerson);
                this.kolhydrat=this.kolhydrat/convertNumber(this.numberOfPerson);
+               this.saturated_fat=this.saturated_fat/convertNumber(this.numberOfPerson);
+               this.monounsaturated_fat=this.monounsaturated_fat/convertNumber(this.numberOfPerson);
+               this.polyunsaturated_fat=this.polyunsaturated_fat/convertNumber(this.numberOfPerson);
+               this.salt=this.salt/convertNumber(this.numberOfPerson);
+               this.dextrose =this.dextrose /convertNumber(this.numberOfPerson);
+
                this.kolhydrat=(this.kolhydrat).toFixed(2);
                this.protein=(this.protein).toFixed(2)
                this.kcal=(this.kcal).toFixed(2)
-            //    this.kcal=this.kcal.toFixed(2);
-            //    this.protein=this.protein.tofixed(2);
-            //    this.kolhydrat=this.kolhydrat.tofixed(2);
-            //    console.log(this.kcal+'Dividing by people');
-            //    console.log(this.protein+'Dividing by people');
-            //    console.log(this.kolhydrat+'Dividing by people');
-               
-              //let result= await calc();
-            //    this.kcal=this.kcal/convertNumber(numberOfPerson);
-            //    console.log(this.kcal+'Dividing by people');
+                //New value
+               this.saturated_fat=(this.saturated_fat).toFixed(2);
+               this.monounsaturated_fat =(this.monounsaturated_fat ).toFixed(2);
+               this.polyunsaturated_fat =(this.polyunsaturated_fat ).toFixed(2);
+               this.salt=(this.salt).toFixed(2);
+               this.dextrose=(this.dextrose).toFixed(2);
         }        
     
         

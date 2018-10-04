@@ -16,6 +16,11 @@ let searchbar= new Vue({
         kcal:'',
         protein:'',
         kolhydrat:'',
+        saturated_fat:'',
+        monounsaturated_fat:'',
+        polyunsaturated_fat:'',
+        salt:'',
+        dextrose:'',
         portions:'',
         csearch:'',
         boolean: false,
@@ -69,6 +74,11 @@ let searchbar= new Vue({
         this.kcal=obj.kcal;
         this.protein=obj.protein;
         this.kolhydrat=obj.kolhydrat;
+        this.saturated_fat=obj.saturated_fat;
+        this.monounsaturated_fat=obj.monounsaturated_fat;
+        this.polyunsaturated_fat=obj.polyunsaturated_fat;
+        this.salt=obj.salt;
+        this.dextrose=obj.dextrose;
 
         console.log(this.kolhydrat);
     },
